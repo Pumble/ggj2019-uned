@@ -17,11 +17,9 @@ public class transicionDiaNoche : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     private int archivoFondoIndice = 0;
     public float tiempoTransicion = 10f; // 10
-    public float tiempoParaReiniciarCamara = 5f;
-    public Camera m_OrthographicCamera;
+    public int tiempoParaReiniciarCamara = 5;
 
     public CinemachineVirtualCamera vcam;
-
     private LensSettings defaultLens;
     private LensSettings zoomOutLens;
 
@@ -62,15 +60,14 @@ public class transicionDiaNoche : MonoBehaviour
                 break;
         }
         archivoFondoIndice++;
-        // m_OrthographicCamera.orthographicSize = 4f;
         vcam.m_Lens = zoomOutLens;
-        //StartCoroutine(reiniciarCamara());
+        StartCoroutine(reiniciarCamara());
     }
     IEnumerator reiniciarCamara() {
         // AQUI SOLO DEBEMOS VOLVER LA CAMARA A LA ORIGINALIDAD
         print(Time.time);
-        m_OrthographicCamera.orthographicSize = 2.0f;
         yield return new WaitForSeconds(tiempoParaReiniciarCamara);
+        vcam.m_Lens = defaultLens;
         print(Time.time);
     }
 }
