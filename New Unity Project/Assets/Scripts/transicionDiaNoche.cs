@@ -26,10 +26,14 @@ public class transicionDiaNoche : MonoBehaviour
 
     public float lerpTime;
 
+	private GameObject controller;
+
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("cambiarFondo", 1.0f, tiempoTransicion);
+		controller = GameObject.FindGameObjectWithTag("Controller");
+
+		InvokeRepeating("cambiarFondo", 1.0f, tiempoTransicion);
         // INICIA CON UN SEGUNDO DESPUES Y SE EJECUTA CADA 30s
 
         defaultLens = new LensSettings(19.6f, 2f, 0.1f, 5000f, 0f, true, 1);
@@ -49,7 +53,8 @@ public class transicionDiaNoche : MonoBehaviour
         switch (archivoFondoIndice)
         {
             case 0:
-                spriteRenderer.sprite = fondo1;
+				controller.GetComponent<Controller>().detenerMusicaNoche();
+				spriteRenderer.sprite = fondo1;
                 break;
             case 1:
                 spriteRenderer.sprite = fondo2;
@@ -58,6 +63,7 @@ public class transicionDiaNoche : MonoBehaviour
                 spriteRenderer.sprite = fondo3;
                 break;
             case 3:
+				controller.GetComponent<Controller>().tocarMusicaNoche();
                 spriteRenderer.sprite = fondo4;
                 break;
             default:

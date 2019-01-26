@@ -17,6 +17,7 @@ public class walk : MonoBehaviour
     void Update()
     {
 
+
 		if (Input.GetKey(KeyCode.D))
         {
 			animacion.SetFloat("Speed", 1);
@@ -50,7 +51,6 @@ public class walk : MonoBehaviour
 
 		if (!Input.anyKey)
 		{
-			print("def");
 			animacion.SetFloat("Speed", 0);
 			animacion.SetFloat("EjeY", 0);
 			animacion.SetFloat("EjeX", 0);
