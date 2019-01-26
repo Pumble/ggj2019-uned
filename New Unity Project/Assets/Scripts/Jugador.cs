@@ -2,10 +2,7 @@
 
 public class Jugador : MonoBehaviour
 {
-
-	[SerializeField]
-	[Range(0,10)]
-	private int vida = 1;
+    private Vida v;
 
     public Casa casa;
     public int danoInflinge;
@@ -13,13 +10,13 @@ public class Jugador : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        v = GetComponentInParent<Vida>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (vida <= 0)
+        if (v.getVida() <= 0)
         {
             Destroy(gameObject);
         }
@@ -32,11 +29,12 @@ public class Jugador : MonoBehaviour
 
 	public int getVida()
 	{
-		return vida;
+		return v.getVida();
 	}
 
 	public void setVida(int _vida)
 	{
-		vida = _vida;
+		// vida = _vida;
+        v.vida = _vida;
 	}
 }
