@@ -20,23 +20,27 @@ public class NoSeVaya : MonoBehaviour
         {
             if (col.gameObject.transform.position.x < -0.1)
             {
-                // SALIENDOSE POR LA IZQUIERDA
-                transform.Translate(Vector2.right * speed * Time.deltaTime);
+                Debug.Log("SALIENDOSE POR LA IZQUIERDA");
+                //transform.Translate(Vector2.right * speed * Time.deltaTime);
+                //col.gameObject.transform.position.x += 10;
             }
             if (col.gameObject.transform.position.x < 0.1)
             {
-                // SALIENDOSE POR LA DERECHA
-                transform.Translate(Vector2.left * speed * Time.deltaTime);
+                Debug.Log("SALIENDOSE POR LA DERECHA");
+                // transform.Translate(Vector2.left * speed * Time.deltaTime);
+                //col.gameObject.transform.position.x -= 10;
             }
             if (col.gameObject.transform.position.y > 0.1)
             {
-                // SALIENDOSE POR ARRIBA
-                transform.Translate(Vector2.down * speed * Time.deltaTime);
+                Debug.Log("SALIENDOSE POR ARRIBA");
+                // transform.Translate(Vector2.down * speed * Time.deltaTime);
+                //col.gameObject.transform.position.y -= 10;
             }
             if (col.gameObject.transform.position.y > -0.1)
             {
-                // SALIENDOSE POR ABAJO
-                transform.Translate(Vector2.up * speed * Time.deltaTime);
+                Debug.Log("SALIENDOSE POR ABAJO");
+                //transform.Translate(Vector2.up * speed * Time.deltaTime);
+                //col.gameObject.transform.position.y += 10;
             }
 
             Debug.Log(col.gameObject.transform.position.x);
