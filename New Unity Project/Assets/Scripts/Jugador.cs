@@ -26,7 +26,7 @@ public class Jugador : MonoBehaviour
 
         if (Input.GetKeyDown("space"))
         {
-            casa.anadirRecursos(5);
+            //casa.anadirRecursos(5);
         }
     }
 
