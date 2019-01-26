@@ -60,15 +60,15 @@ public class Controller : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		print(string.Format("musicaNoche{0} introMusicaPrincipal{1} musicaPrincipal{2} introMusicaLobos{3} MusicaLobos{4} musicaIntroTocando{5}",
+		/*print(string.Format("musicaNoche{0} introMusicaPrincipal{1} musicaPrincipal{2} introMusicaLobos{3} MusicaLobos{4} musicaIntroTocando{5}",
 			!musicaNoche.isPlaying, !introMusicaPrincipal.isPlaying,
 			!musicaPrincipal.isPlaying, !introMusicaLobos.isPlaying, !MusicaLobos.isPlaying, !musicaIntroTocando));
+            */
 
 		if (!musicaNoche.isPlaying && !introMusicaPrincipal.isPlaying && 
 			!musicaPrincipal.isPlaying && !introMusicaLobos.isPlaying && !MusicaLobos.isPlaying && !musicaIntroTocando)
 		{
 			musicaPrincipal.Play();
-			print("a");
 		}
 		else if(false)
 		{
@@ -77,7 +77,7 @@ public class Controller : MonoBehaviour
 
 
 		if (musicaIntroTocando && !introMusicaLobos.isPlaying && !MusicaLobos.isPlaying)
-		{ MusicaLobos.Play(); print("h");
+		{ MusicaLobos.Play();
 			musicaIntroTocando = false;
 		}
 
@@ -113,7 +113,6 @@ public class Controller : MonoBehaviour
 			musicaIntroTocando = true;
 			spawnearHorda = false;
 			introMusicaLobos.Play();
-			print("qq");
 		}
 		GameObject obj = Instantiate(lobo, Random.insideUnitCircle*radioDeSpawn, Quaternion.identity) ;
 		Vector2 posNueva = new Vector2(-obj.transform.position.x+spawnDeLobos.position.x,
@@ -130,8 +129,6 @@ public class Controller : MonoBehaviour
 		introMusicaLobos.Stop();
 
 		musicaNoche.Play();
-		print("hss");
-
 	}
 
 	public void detenerMusicaNoche()

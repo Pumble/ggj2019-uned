@@ -67,7 +67,7 @@ public class transicionDiaNoche : MonoBehaviour
                 spriteRenderer.sprite = fondo4;
                 break;
             default:
-                archivoFondoIndice = 0;
+                archivoFondoIndice = -1;
                 break;
         }
         archivoFondoIndice++;

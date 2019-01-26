@@ -5,7 +5,8 @@ using UnityEngine;
 public class walk : MonoBehaviour
 {
     public float speed;
-	private Animator animacion;
+    public float tiempoDeAnimacionAtaque;
+    private Animator animacion;
 
     // Start is called before the first frame update
     void Start()
@@ -59,7 +60,13 @@ public class walk : MonoBehaviour
             animacion.SetFloat("Speed", 0);
             animacion.SetFloat("EjeY", 0);
             animacion.SetFloat("EjeX", 0);
-            animacion.SetBool("Speed", 0);
+            animacion.SetBool("atacando", true);
+            StartCoroutine(dejarDeAtacar());
         }
+    }
+    IEnumerator dejarDeAtacar()
+    {
+        yield return new WaitForSeconds(tiempoDeAnimacionAtaque);
+        animacion.SetBool("atacando", false);
     }
 }
