@@ -16,8 +16,6 @@ public class walk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
 		if (Input.GetKey(KeyCode.D))
         {
 			animacion.SetFloat("Speed", 1);
@@ -55,5 +53,13 @@ public class walk : MonoBehaviour
 			animacion.SetFloat("EjeY", 0);
 			animacion.SetFloat("EjeX", 0);
 		}
+
+        if (Input.GetKeyDown("space"))
+        {
+            animacion.SetFloat("Speed", 0);
+            animacion.SetFloat("EjeY", 0);
+            animacion.SetFloat("EjeX", 0);
+            animacion.SetBool("Speed", 0);
+        }
     }
 }
