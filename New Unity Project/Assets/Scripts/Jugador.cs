@@ -7,6 +7,9 @@ public class Jugador : MonoBehaviour
 	[Range(0,10)]
 	private int vida = 1;
 
+    public Casa casa;
+    public int danoInflinge;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +19,15 @@ public class Jugador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(vida <= 0)
-		{
-			Destroy(gameObject);
-		}
+        if (vida <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+        if (Input.GetKeyDown("space"))
+        {
+            casa.anadirRecursos(5);
+        }
     }
 
 	public int getVida()
