@@ -7,9 +7,10 @@ public class walk : MonoBehaviour
     public float speed;
 	private Animator animacion;
 	public bool muerto = false;
+	public bool inmovil = false;
 
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
 		animacion = GetComponentInChildren<Animator>();
     }
@@ -18,7 +19,7 @@ public class walk : MonoBehaviour
     void Update()
     {
 
-		if (!muerto) { 
+		if (!muerto || inmovil) { 
 		if (Input.GetKey(KeyCode.D))
         {
 			animacion.SetFloat("Speed", 1);

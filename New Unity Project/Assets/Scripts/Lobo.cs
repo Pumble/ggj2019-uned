@@ -23,6 +23,8 @@ public class Lobo : MonoBehaviour
 	[Range(0, 5)]
 	private int danno;
 
+	public Animator anim;
+
 	private bool ataco = false;//atacó
 
 	// Start is called before the first frame update
@@ -45,13 +47,27 @@ public class Lobo : MonoBehaviour
 			if (!ataco && enRangoJugador)
 			{
 				ataco = true;
+				anim.SetBool("Idle", true);
+				anim.SetBool("Corriendo", false);
+				anim.SetBool("Atacando", false);
 				StartCoroutine(AtacarJugador());
 			}
 
-			if (!ataco && enRangoCasa)
+			else if (!ataco && enRangoCasa)
 			{
 				ataco = true;
+				anim.SetBool("Idle", true);
+				anim.SetBool("Corriendo", false);
+				anim.SetBool("Atacando", false);
 				StartCoroutine(AtacarCasa());
+			}
+			else if(!ataco)
+			{
+				
+
+				anim.SetBool("Idle", false);
+				anim.SetBool("Corriendo", true);
+				anim.SetBool("Atacando", false);
 			}
 
 		}
@@ -67,7 +83,14 @@ public class Lobo : MonoBehaviour
 	{
 		
 		yield return new WaitForSeconds(velocidadDeAtaque);
+
+		anim.SetBool("Idle", false);
+		anim.SetBool("Corriendo", false);
+		anim.SetBool("Atacando", true);
 		
+
+		yield return new WaitForSeconds(velocidadDeAtaque);
+
 		int vidaJugador = jugador.GetComponent<Jugador>().getVida();
 		jugador.GetComponent<Jugador>().setVida(vidaJugador-=danno);
 		ataco = false;
@@ -77,6 +100,11 @@ public class Lobo : MonoBehaviour
 	private IEnumerator AtacarCasa()
 	{
 		yield return new WaitForSeconds(velocidadDeAtaque);
+		
+
+		anim.SetBool("Idle", false);
+		anim.SetBool("Corriendo", false);
+		anim.SetBool("Atacando", true);
 
 		//int vidaJugador = Casa.GetComponent<Casa>().getVida();
 		//casa.GetComponent<Casa>().setVida(vidaJugador -= danno);

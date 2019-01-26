@@ -8,53 +8,45 @@ using UnityEngine;
 
 public class NoSeVaya : MonoBehaviour
 {
-    public float speed;
-    // Start is called before the first frame update
-    void Start()
+    
+	public Transform centro;
+	public float velocidad;
+	public float tiempo;
+	private float _tiempo;
+	private bool mover = false;
+	private bool parar = false;
+	private GameObject jugador;
+
+	private void Start()
+	{
+		jugador = GameObject.FindGameObjectWithTag("Player");
+		_tiempo = tiempo;
+	}
+
+
+	void OnTriggerExit2D(Collider2D col)
     {
-    }
-
-    void OnTriggerExit2D(Collider2D col)
-    {
-        if(col.gameObject.name == "player")
-        {
-            if (col.gameObject.transform.position.x < -0.1)
-            {
-                Debug.Log("SALIENDOSE POR LA IZQUIERDA");
-                //transform.Translate(Vector2.right * speed * Time.deltaTime);
-                //col.gameObject.transform.position.x += 10;
-            }
-            if (col.gameObject.transform.position.x < 0.1)
-            {
-                Debug.Log("SALIENDOSE POR LA DERECHA");
-                // transform.Translate(Vector2.left * speed * Time.deltaTime);
-                //col.gameObject.transform.position.x -= 10;
-            }
-            if (col.gameObject.transform.position.y > 0.1)
-            {
-                Debug.Log("SALIENDOSE POR ARRIBA");
-                // transform.Translate(Vector2.down * speed * Time.deltaTime);
-                //col.gameObject.transform.position.y -= 10;
-            }
-            if (col.gameObject.transform.position.y > -0.1)
-            {
-                Debug.Log("SALIENDOSE POR ABAJO");
-                //transform.Translate(Vector2.up * speed * Time.deltaTime);
-                //col.gameObject.transform.position.y += 10;
-            }
-
-            Debug.Log(col.gameObject.transform.position.x);
-            Debug.Log(col.gameObject.transform.position.y);
-
-            //Debug.Log(col.OverlapPoint().ToStiring());
-            //transform.Translate(Vector2.right * speed * Time.deltaTime);
-        }
+		Debug.Log("a");
+		mover = true;
+		jugador.GetComponent<walk>().inmovil = true;
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        
+		if (mover) {
+
+			if (_tiempo <= 0)
+			{
+				//parar = true;
+				mover = false;
+				jugador.GetComponent<walk>().inmovil = false;
+				_tiempo = tiempo;
+			}
+			jugador.transform.position = Vector2.Lerp(jugador.transform.position, centro.position, velocidad*Time.deltaTime);
+			_tiempo -= Time.deltaTime;
+			
+		}
     }
 }
