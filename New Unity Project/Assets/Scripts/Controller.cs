@@ -48,11 +48,13 @@ public class Controller : MonoBehaviour
 
 	private bool musicaIntroTocando = false;
 	private bool bajarVolumen = false;
+	private walk jugador;
 
 
 
 	void Start()
     {
+		jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<walk>();
 		introMusicaPrincipal.Play();
 		_tiempoSpawn = tiempoSpawn;
     }
@@ -60,45 +62,52 @@ public class Controller : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		print(string.Format("musicaNoche{0} introMusicaPrincipal{1} musicaPrincipal{2} introMusicaLobos{3} MusicaLobos{4} musicaIntroTocando{5}",
-			!musicaNoche.isPlaying, !introMusicaPrincipal.isPlaying,
-			!musicaPrincipal.isPlaying, !introMusicaLobos.isPlaying, !MusicaLobos.isPlaying, !musicaIntroTocando));
-
-		if (!musicaNoche.isPlaying && !introMusicaPrincipal.isPlaying && 
-			!musicaPrincipal.isPlaying && !introMusicaLobos.isPlaying && !MusicaLobos.isPlaying && !musicaIntroTocando)
+		if (!jugador.muerto)
 		{
-			musicaPrincipal.Play();
-			print("a");
+			if (!musicaNoche.isPlaying && !introMusicaPrincipal.isPlaying &&
+			  !musicaPrincipal.isPlaying && !introMusicaLobos.isPlaying && !MusicaLobos.isPlaying && !musicaIntroTocando)
+			{
+				musicaPrincipal.Play();
+			}
+			else if (false)
+			{
+				musicaPrincipal.Stop();
+			}
+
+
+			if (musicaIntroTocando && !introMusicaLobos.isPlaying && !MusicaLobos.isPlaying)
+			{
+				MusicaLobos.Play();
+				musicaIntroTocando = false;
+			}
+
+			if (cuantosLobos > 0 && !spawneado)
+			{
+
+				spawneado = true;
+				StartCoroutine(spawnearLobos());
+
+			}
+			else if (cuantosLobos <= 0 && !spawnearHorda)
+			{
+
+				MusicaLobos.Stop();
+				if (_tiempoSpawn <= 0)
+				{
+					_tiempoSpawn = tiempoSpawn;
+					spawnearHorda = true;
+				}
+				_tiempoSpawn -= Time.deltaTime;
+			}
 		}
-		else if(false)
+		else
 		{
 			musicaPrincipal.Stop();
-		}
-
-
-		if (musicaIntroTocando && !introMusicaLobos.isPlaying && !MusicaLobos.isPlaying)
-		{ MusicaLobos.Play(); print("h");
-			musicaIntroTocando = false;
-		}
-
-		if (cuantosLobos > 0 && !spawneado)
-		{
-			
-			spawneado = true;
-			StartCoroutine(spawnearLobos());
-			
-		}else if(cuantosLobos <= 0 && !spawnearHorda)
-		{
-
 			MusicaLobos.Stop();
-			if (_tiempoSpawn<=0)
-			{
-				_tiempoSpawn = tiempoSpawn;
-				spawnearHorda = true;
-			}
-			_tiempoSpawn -= Time.deltaTime;
+			introMusicaPrincipal.Stop();
+			introMusicaLobos.Stop();
+			musicaNoche.Stop();
 		}
-
 		
 	}
 
@@ -113,7 +122,6 @@ public class Controller : MonoBehaviour
 			musicaIntroTocando = true;
 			spawnearHorda = false;
 			introMusicaLobos.Play();
-			print("qq");
 		}
 		GameObject obj = Instantiate(lobo, Random.insideUnitCircle*radioDeSpawn, Quaternion.identity) ;
 		Vector2 posNueva = new Vector2(-obj.transform.position.x+spawnDeLobos.position.x,
@@ -130,7 +138,6 @@ public class Controller : MonoBehaviour
 		introMusicaLobos.Stop();
 
 		musicaNoche.Play();
-		print("hss");
 
 	}
 
