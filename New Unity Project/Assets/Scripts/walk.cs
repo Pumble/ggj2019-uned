@@ -17,6 +17,7 @@ public class walk : MonoBehaviour
     void Update()
     {
 
+
 		if (Input.GetKey(KeyCode.D))
         {
 			animacion.SetFloat("Speed", 1);
