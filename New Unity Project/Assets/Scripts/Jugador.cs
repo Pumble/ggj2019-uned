@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Jugador : MonoBehaviour
 {
@@ -6,6 +7,9 @@ public class Jugador : MonoBehaviour
 
     public Casa casa;
     public int danoInflinge;
+	public GameObject gameOver;
+
+	public AudioSource muerteMusica;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +22,12 @@ public class Jugador : MonoBehaviour
     {
         if (v.getVida() <= 0)
         {
-            Destroy(gameObject);
+			if (!muerteMusica.isPlaying)
+			{ muerteMusica.Play(); print("a"); }
+			//Destroy(gameObject);
+			//Animación
+			gameObject.GetComponent<walk>().muerto = true;
+			Reiniciar();
         }
 
         if (Input.GetKeyDown("space"))
@@ -36,5 +45,10 @@ public class Jugador : MonoBehaviour
 	{
 		// vida = _vida;
         v.vida = _vida;
+	}
+
+	void Reiniciar()
+	{
+		gameOver.SetActive(true);
 	}
 }
