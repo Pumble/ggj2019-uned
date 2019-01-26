@@ -138,7 +138,6 @@ public class Controller : MonoBehaviour
 		introMusicaLobos.Stop();
 
 		musicaNoche.Play();
-
 	}
 
 	public void detenerMusicaNoche()
