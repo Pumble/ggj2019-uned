@@ -31,8 +31,8 @@ public class transicionDiaNoche : MonoBehaviour
         InvokeRepeating("cambiarFondo", 1.0f, tiempoTransicion);
         // INICIA CON UN SEGUNDO DESPUES Y SE EJECUTA CADA 30s
 
-        defaultLens = new LensSettings(19.6f, 2f, 0, 01f, 5000f, 0f, true, );
-        zoomOutLens = new LensSettings(19.6f, 4f, 0, 01f, 5000f, 0f, true, );
+        defaultLens = new LensSettings(19.6f, 2f, 0.1f, 5000f, 0f, true, 1);
+        zoomOutLens = new LensSettings(19.6f, 4f, 0.1f, 5000f, 0f, true, 1);
 }
 
     // Update is called once per frame
