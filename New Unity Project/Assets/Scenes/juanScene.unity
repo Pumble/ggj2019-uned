@@ -332,6 +332,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 5
+  casa: {fileID: 0}
+  danoInflinge: 0
 --- !u!1001 &5784094319828233503
 PrefabInstance:
   m_ObjectHideFlags: 0
