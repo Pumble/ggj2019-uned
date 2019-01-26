@@ -5,6 +5,7 @@ using Cinemachine;
 
 // https://docs.unity3d.com/ScriptReference/MonoBehaviour.InvokeRepeating.html
 // https://www.youtube.com/watch?v=PuXUCX21jJU
+// https://docs.unity3d.com/Packages/com.unity.cinemachine@2.1/api/Cinemachine.CinemachineVirtualCamera.html
 
 public class transicionDiaNoche : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class transicionDiaNoche : MonoBehaviour
     public CinemachineVirtualCamera vcam;
     private LensSettings defaultLens;
     private LensSettings zoomOutLens;
+
+    public float lerpTime;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +44,9 @@ public class transicionDiaNoche : MonoBehaviour
 
     void cambiarFondo()
     {
-        switch(archivoFondoIndice)
+        // vcam.m_Lens = zoomOutLens;
+        vcam.m_Lens = LensSettings.Lerp(defaultLens, zoomOutLens, lerpTime * Time.deltaTime);
+        switch (archivoFondoIndice)
         {
             case 0:
                 spriteRenderer.sprite = fondo1;
@@ -60,14 +65,12 @@ public class transicionDiaNoche : MonoBehaviour
                 break;
         }
         archivoFondoIndice++;
-        vcam.m_Lens = zoomOutLens;
         StartCoroutine(reiniciarCamara());
     }
     IEnumerator reiniciarCamara() {
         // AQUI SOLO DEBEMOS VOLVER LA CAMARA A LA ORIGINALIDAD
-        print(Time.time);
         yield return new WaitForSeconds(tiempoParaReiniciarCamara);
-        vcam.m_Lens = defaultLens;
-        print(Time.time);
+        // vcam.m_Lens = defaultLens;
+        vcam.m_Lens = LensSettings.Lerp(zoomOutLens, defaultLens, lerpTime * Time.deltaTime);
     }
 }
