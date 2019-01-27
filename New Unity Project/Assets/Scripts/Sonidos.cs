@@ -9,7 +9,7 @@ public class Sonidos : MonoBehaviour
 	public AudioSource ataqueLobo;
 	public AudioSource upgradeCasa;
 	public AudioSource ganarVida;
-
+    public AudioSource perder;
 
 	public void sndMadera()
 	{
@@ -31,4 +31,8 @@ public class Sonidos : MonoBehaviour
 	{
 		ganarVida.Play();
 	}
+    public void sndPerder()
+    {
+        perder.Play();
+    }
 }

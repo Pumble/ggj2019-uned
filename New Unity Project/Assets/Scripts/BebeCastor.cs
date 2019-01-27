@@ -8,13 +8,16 @@ public class BebeCastor : MonoBehaviour
     public float cooldown;
     public bool tocandoHijo = false;
     public float tiempoAnimacionCura = 2f;
+    public GameObject gameOver;
     private Animator animacion;
     private float _cooldown;
     private float tiempoParaSaludar;
+    private Vida v;
 
     // Start is called before the first frame update
     void Start()
     {
+        v = GetComponent<Vida>(); // OBTENER COMPONENTES HERMANOS
         animacion = GetComponentInChildren<Animator>();
         _cooldown = cooldown;
         tiempoParaSaludar = Random.Range(5f, 12f);
@@ -25,6 +28,10 @@ public class BebeCastor : MonoBehaviour
     void Update()
     {
         _cooldown -= Time.deltaTime;
+        if (v.getVida() <= 0)
+        {
+            animacion.SetBool("morir", true);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -35,7 +42,6 @@ public class BebeCastor : MonoBehaviour
             tocandoHijo = true;
         }
     }
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && tocandoHijo)
@@ -77,5 +83,21 @@ public class BebeCastor : MonoBehaviour
 
         tiempoParaSaludar = Random.Range(5f, 12f);
         StartCoroutine(saludar());
+    }
+
+    public void sndAtaqueLobo()
+    {
+        v.reducirVida(1);
+        if (v.getVida() <= 0)
+        {
+            Debug.Log("Muerte del bebe");
+            // PARAR LA MUSICA
+            // GameObject.FindGameObjectWithTag("Controller").GetComponent<Controller>().detenerTodaMusicaDeEsteComponente();
+            jugador.GetComponent<walk>().muerto = true; // ESTE CAMBIO HACE LAS 2 COSAS DE ARRIBA
+            // TOCAR LA MUSICA MUERTE
+            GameObject.FindGameObjectWithTag("snd").GetComponent<Sonidos>().sndPerder();
+            // PANTALLA DE GAME OVER
+            gameOver.SetActive(true);
+        }
     }
 }
