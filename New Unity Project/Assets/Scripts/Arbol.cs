@@ -2,16 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class Arbol : MonoBehaviour
 {
     public Jugador jugador;
     public Casa casa;
     private Vida v;
+    [SerializeField]
+    public Sprite[] tiposArboles;
+
+    private SpriteRenderer spriteRender;
 
     // Start is called before the first frame update
     void Start()
     {
         v = GetComponentInParent<Vida>();
+        spriteRender = GetComponentInChildren<SpriteRenderer>();
+        spriteRender.sprite = tiposArboles[Random.Range(0, 2)];
     }
 
     // Update is called once per frame
@@ -33,7 +40,7 @@ public class Arbol : MonoBehaviour
     {
         if (col.gameObject.name == "player")
         {
-            if (Input.GetKeyDown("space"))
+            if (Input.GetMouseButtonDown(1))
             {
                 v.reducirVida(jugador.danoInflinge);
             }
@@ -43,7 +50,7 @@ public class Arbol : MonoBehaviour
     {
         if (col.gameObject.name == "player")
         {
-            if (Input.GetKeyDown("space"))
+            if (Input.GetMouseButtonDown(1))
             {
                 v.reducirVida(jugador.danoInflinge);
             }
