@@ -4039,7 +4039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a340fa72fb0d6ac4e81dfab61fc915da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 6
+  vida: 5
 --- !u!82 &1817892759
 AudioSource:
   m_ObjectHideFlags: 0
