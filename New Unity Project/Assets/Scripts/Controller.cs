@@ -16,6 +16,7 @@ public class Controller : MonoBehaviour
 
 	[SerializeField]
 	private int cuantosLobos;
+	private int _cuantosLobos;
 
 	[SerializeField]
 	[Tooltip("Tiempo para que los lobos spawneen")]
@@ -55,6 +56,7 @@ public class Controller : MonoBehaviour
 
 	void Start()
     {
+		_cuantosLobos = cuantosLobos;
 		jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<walk>();
 		introMusicaPrincipal.Play();
 		_tiempoSpawn = tiempoSpawn;
@@ -65,6 +67,12 @@ public class Controller : MonoBehaviour
 	{
 		if (!jugador.muerto)
 		{
+			if(_cuantosLobos <= 0 && Lobo.cantidadDeLobos <= 0)
+			{
+				_cuantosLobos = cuantosLobos;
+				_tiempoSpawn = tiempoSpawn;
+			}
+
 			if (!musicaNoche.isPlaying && !introMusicaPrincipal.isPlaying &&
 			  !musicaPrincipal.isPlaying && !introMusicaLobos.isPlaying && !MusicaLobos.isPlaying && !musicaIntroTocando && Lobo.cantidadDeLobos > 0)
 			{
@@ -83,7 +91,7 @@ public class Controller : MonoBehaviour
 				musicaIntroTocando = false;
 			}
 
-			if (cuantosLobos > 0 && !spawneado)
+			if (_cuantosLobos > 0 && !spawneado)
 			{
 
 				spawneado = true;
@@ -116,7 +124,7 @@ public class Controller : MonoBehaviour
 	IEnumerator spawnearLobos()
 	{
 		yield return new WaitForSeconds(tiempoSpawn);
-		cuantosLobos--;
+		_cuantosLobos--;
 		musicaPrincipal.Stop();
 
 		if (!introMusicaLobos.isPlaying && !MusicaLobos.isPlaying && spawnearHorda)
@@ -131,6 +139,7 @@ public class Controller : MonoBehaviour
 									-obj.transform.position.y+spawnDeLobos.position.y);
 		obj.transform.position = posNueva;
 		spawneado = false;
+
 	}
 
 	public void tocarMusicaNoche()
