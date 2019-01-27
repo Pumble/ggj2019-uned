@@ -8,9 +8,10 @@ public class walk : MonoBehaviour
     public float tiempoDeAnimacionAtaque;
     private Animator animacion;
 	public bool muerto = false;
+	public bool inmovil = false;
 
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
 		animacion = GetComponentInChildren<Animator>();
     }
@@ -19,14 +20,14 @@ public class walk : MonoBehaviour
     void Update()
     {
 
-		if (!muerto) { 
-		    if (Input.GetKey(KeyCode.D))
-            {
-			    animacion.SetFloat("Speed", 1);
-			    animacion.SetFloat("EjeX", 1);
-			    animacion.transform.localRotation = Quaternion.Euler(Vector3.up);
-			    transform.Translate(Vector2.right * speed * Time.deltaTime);
-            }
+		if (!muerto || inmovil) { 
+			if (Input.GetKey(KeyCode.D))
+			{
+				animacion.SetFloat("Speed", 1);
+				animacion.SetFloat("EjeX", 1);
+				animacion.transform.localRotation = Quaternion.Euler(Vector3.up);
+				transform.Translate(Vector2.right * speed * Time.deltaTime);
+			}
 
             if (Input.GetKey(KeyCode.A))
             {
