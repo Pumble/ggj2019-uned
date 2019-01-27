@@ -26,62 +26,70 @@ public class walk : MonoBehaviour
     {
 		_cooldown-=Time.deltaTime;
 
-		if (!muerto || inmovil) { 
-			if (Input.GetKey(KeyCode.D))
-			{
-				animacion.SetFloat("Speed", 1);
-				animacion.SetFloat("EjeX", 1);
-				animacion.transform.localRotation = Quaternion.Euler(Vector3.up);
-				transform.Translate(Vector2.right * speed * Time.deltaTime);
-			}
+        if (!muerto || inmovil)
+        {
+            if (Input.GetKey(KeyCode.D))
+            {
+                animacion.SetFloat("Speed", 1);
+                animacion.SetFloat("EjeX", 1);
+                animacion.transform.localRotation = Quaternion.Euler(Vector3.up);
+                transform.Translate(Vector2.right * speed * Time.deltaTime);
+            }
 
             else if (Input.GetKey(KeyCode.A))
             {
-			    animacion.SetFloat("Speed", -1);
-			    animacion.SetFloat("EjeX", -1);
-			    animacion.transform.localRotation = Quaternion.Euler(Vector3.up * 180);
-			    //transform.localRotation= Quaternion.Euler(new Vector3(0, 0, -10));
-			    transform.Translate(Vector2.left * speed * Time.deltaTime);
+                animacion.SetFloat("Speed", -1);
+                animacion.SetFloat("EjeX", -1);
+                animacion.transform.localRotation = Quaternion.Euler(Vector3.up * 180);
+                //transform.localRotation= Quaternion.Euler(new Vector3(0, 0, -10));
+                transform.Translate(Vector2.left * speed * Time.deltaTime);
             }
 
-			else if(Input.GetKey(KeyCode.S))
+            else if (Input.GetKey(KeyCode.S))
             {
-			    animacion.SetFloat("Speed", -1);
-			    animacion.SetFloat("EjeY", -1);
-			    transform.Translate(Vector2.down * speed * Time.deltaTime);
+                animacion.SetFloat("Speed", -1);
+                animacion.SetFloat("EjeY", -1);
+                transform.Translate(Vector2.down * speed * Time.deltaTime);
             }
 
-			else if(Input.GetKey(KeyCode.W))
+            else if (Input.GetKey(KeyCode.W))
             {
-			    animacion.SetFloat("Speed", 1);
-			    animacion.SetFloat("EjeY", 1);
-			    transform.Translate(Vector2.up * speed * Time.deltaTime);
+                animacion.SetFloat("Speed", 1);
+                animacion.SetFloat("EjeY", 1);
+                transform.Translate(Vector2.up * speed * Time.deltaTime);
             }
 
-			if (!Input.anyKey)
-			{
-				animacion.SetFloat("Speed", 0);
-				animacion.SetFloat("EjeY", 0);
-				animacion.SetFloat("EjeX", 0);
-			}
-			if (Input.GetMouseButtonDown(0)) // MARIO COLITAS
-			{
-				animacion.SetFloat("Speed", 0);
-				animacion.SetFloat("EjeY", 0);
-				animacion.SetFloat("EjeX", 0);
+            if (!Input.anyKey)
+            {
+                animacion.SetFloat("Speed", 0);
+                animacion.SetFloat("EjeY", 0);
+                animacion.SetFloat("EjeX", 0);
+            }
+            if (Input.GetMouseButtonDown(0)) // MARIO COLITAS
+            {
+                animacion.SetFloat("Speed", 0);
+                animacion.SetFloat("EjeY", 0);
+                animacion.SetFloat("EjeX", 0);
                 animacion.SetBool("morder", false);
+                animacion.SetBool("morir", false);
                 animacion.SetBool("atacando", true);
                 StartCoroutine(dejarDeAtacar());
-			}
+            }
             else if (Input.GetMouseButtonDown(1)) // MORDER
             {
                 animacion.SetFloat("Speed", 0);
                 animacion.SetFloat("EjeY", 0);
                 animacion.SetFloat("EjeX", 0);
                 animacion.SetBool("atacando", false);
+                animacion.SetBool("morir", false);
                 animacion.SetBool("morder", true);
                 StartCoroutine(dejarDeMorder());
             }
+        }
+        else
+        {
+            inmovil = true;
+            animacion.SetBool("morir", true);
         }
     }
     IEnumerator dejarDeAtacar()
