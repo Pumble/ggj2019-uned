@@ -100,4 +100,9 @@ public class BebeCastor : MonoBehaviour
             gameOver.SetActive(true);
         }
     }
+
+    public void besitos()
+    {
+        animacion.SetBool("saludar", true);
+    }
 }
