@@ -19,6 +19,8 @@ public class Casa : MonoBehaviour
 	private int sigNivel;
 
     public CinemachineVirtualCamera vcam;
+    public BebeCastor bebeCastorReferencia;
+    public GameObject bebeMensajeCanvas;
 
     // Start is called before the first frame update
     void Start()
@@ -44,10 +46,18 @@ public class Casa : MonoBehaviour
 			musicaVictoria.Play();
 			
 			GameObject.FindGameObjectWithTag("Controller").GetComponent<Controller>().detenerTodaMusicaDeEsteComponente();
-		}
+
+            // UNA VEZ GANA, HAY QUE DETENER LAS TRANSICIONES Y HACER ZOOM IN EN EL CASTOR BEBE
+            vcam.GetComponent<transicionDiaNoche>().detenerTransicion = true; // DETENER LAS TRANSCIONES
+            //vcam.m_Follow = bebeCastorReferencia.GetComponent<Transform>();
+            // vcam.m_LookAt = bebeCastorReferencia.GetComponent<Transform>();
+            vcam.Follow = bebeCastorReferencia.GetComponent<Transform>();
+            //bebeMensajeCanvas.enabled = true;
+            bebeMensajeCanvas.SetActive(true);
+            bebeCastorReferencia.besitos();
+        }
         else
         {
-			
 			if (recursos >= recursosParaNivel2 && sigNivel != recursosParaNivel3)
             {
 				GameObject.FindGameObjectWithTag("snd").GetComponent<Sonidos>().sndUpgradeCasa();
