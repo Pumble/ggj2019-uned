@@ -44,6 +44,7 @@ public class BebeCastor : MonoBehaviour
             {
                 Debug.Log("Curando");
                 animacion.SetBool("curar", true);
+				GameObject.FindGameObjectWithTag("snd").GetComponent<Sonidos>().sndGanarVida();
                 StartCoroutine(dejarDeCurar());
                 _cooldown = cooldown;
             }

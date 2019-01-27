@@ -41,7 +41,7 @@ public class Arbol : MonoBehaviour
 				v.reducirVida(jugador.danoInflinge);
 				if (v.vida <= 0)
 				{
-					//GameObject.FindGameObjectWithTag("snd").GetComponent<Sonidos>().sndMadera();
+					GameObject.FindGameObjectWithTag("snd").GetComponent<Sonidos>().sndMadera();
 				}
 			}
 		}

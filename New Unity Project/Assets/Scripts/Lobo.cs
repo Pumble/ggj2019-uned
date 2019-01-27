@@ -99,7 +99,7 @@ public class Lobo : MonoBehaviour
 		anim.SetBool("Corriendo", false);
 		anim.SetBool("Atacando", true);
 
-		//GameObject.FindGameObjectWithTag("snd").GetComponent<Sonidos>().sndAtaqueLobo();
+		GameObject.FindGameObjectWithTag("snd").GetComponent<Sonidos>().sndAtaqueLobo();
 		yield return new WaitForSeconds(velocidadDeAtaque);
 
 		int vidaJugador = jugador.GetComponent<Jugador>().getVida();
