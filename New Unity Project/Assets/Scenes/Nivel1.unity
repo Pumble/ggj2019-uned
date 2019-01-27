@@ -1469,6 +1469,7 @@ MonoBehaviour:
   lerpTime: 1
   zoomIn: 2
   zoomOut: 4
+  detenerTransicion: 0
 --- !u!1 &454488535
 GameObject:
   m_ObjectHideFlags: 0
@@ -4237,6 +4238,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ddd023987826de04380cabde7520e032, type: 3}
   - {fileID: 21300000, guid: 2f63dc4d7f535db4d9e1b538c1c114bd, type: 3}
   musicaVictoria: {fileID: 1962069008}
+  vcam: {fileID: 0}
 --- !u!82 &1962069008
 AudioSource:
   m_ObjectHideFlags: 0
