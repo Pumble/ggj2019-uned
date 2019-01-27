@@ -26,7 +26,6 @@ public class NoSeVaya : MonoBehaviour
 
 	void OnTriggerExit2D(Collider2D col)
     {
-		Debug.Log("a");
 		mover = true;
 		jugador.GetComponent<walk>().inmovil = true;
     }
@@ -44,7 +43,8 @@ public class NoSeVaya : MonoBehaviour
 				jugador.GetComponent<walk>().inmovil = false;
 				_tiempo = tiempo;
 			}
-			jugador.transform.position = Vector2.Lerp(jugador.transform.position, centro.position, velocidad*Time.deltaTime);
+
+			jugador.transform.position = Vector2.Lerp(jugador.transform.position, centro.position, velocidad * Time.deltaTime);
 			_tiempo -= Time.deltaTime;
 			
 		}

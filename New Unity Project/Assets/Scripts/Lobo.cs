@@ -38,6 +38,11 @@ public class Lobo : MonoBehaviour
     // Update is called once per frame
     void Update()
 	{
+		if(GetComponent<Vida>().vida <= 0)
+		{
+
+			Destroy(gameObject);
+		}
 
 		bool enRangoJugador = estaCerca(transform.position, jugador.transform.position);
 		bool enRangoCasa = estaCerca(transform.position, casa.transform.position);
@@ -111,7 +116,7 @@ public class Lobo : MonoBehaviour
 		ataco = false;
 	}
 
-	private bool estaCerca(Vector2 objeto, Vector2 destino)
+	public bool estaCerca(Vector2 objeto, Vector2 destino)
 	{
 		
 		return Vector2.Distance(destino, objeto) <= rango;

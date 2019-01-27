@@ -9,16 +9,22 @@ public class walk : MonoBehaviour
     private Animator animacion;
 	public bool muerto = false;
 	public bool inmovil = false;
+	public bool tocandoArbol = false;
+
+	public float cooldown;
+	private float _cooldown;
 
 	// Start is called before the first frame update
 	void Start()
     {
+		_cooldown = cooldown;
 		animacion = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+		_cooldown-=Time.deltaTime;
 
 		if (!muerto || inmovil) { 
 			if (Input.GetKey(KeyCode.D))
@@ -29,7 +35,7 @@ public class walk : MonoBehaviour
 				transform.Translate(Vector2.right * speed * Time.deltaTime);
 			}
 
-            if (Input.GetKey(KeyCode.A))
+            else if (Input.GetKey(KeyCode.A))
             {
 			    animacion.SetFloat("Speed", -1);
 			    animacion.SetFloat("EjeX", -1);
@@ -38,14 +44,14 @@ public class walk : MonoBehaviour
 			    transform.Translate(Vector2.left * speed * Time.deltaTime);
             }
 
-            if (Input.GetKey(KeyCode.S))
+			else if(Input.GetKey(KeyCode.S))
             {
 			    animacion.SetFloat("Speed", -1);
 			    animacion.SetFloat("EjeY", -1);
 			    transform.Translate(Vector2.down * speed * Time.deltaTime);
             }
 
-            if (Input.GetKey(KeyCode.W))
+			else if(Input.GetKey(KeyCode.W))
             {
 			    animacion.SetFloat("Speed", 1);
 			    animacion.SetFloat("EjeY", 1);
@@ -67,7 +73,7 @@ public class walk : MonoBehaviour
                 animacion.SetBool("atacando", true);
                 StartCoroutine(dejarDeAtacar());
 			}
-            if (Input.GetMouseButtonDown(1)) // MORDER
+            else if (Input.GetMouseButtonDown(1)) // MORDER
             {
                 animacion.SetFloat("Speed", 0);
                 animacion.SetFloat("EjeY", 0);
@@ -88,4 +94,34 @@ public class walk : MonoBehaviour
         yield return new WaitForSeconds(tiempoDeAnimacionAtaque);
         animacion.SetBool("morder", false);
     }
+
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+
+		if (collision.CompareTag("Arbol"))
+		{
+			tocandoArbol = true;
+		} 
+	}
+
+	private void OnTriggerStay2D(Collider2D collision)
+	{
+		if (collision.CompareTag("Enemigo") && animacion.GetBool("atacando"))
+		{
+			if (_cooldown <= 0)
+			{
+				collision.gameObject.GetComponent<Vida>().vida--;
+				_cooldown = cooldown;
+			}
+		}
+	}
+
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		if (collision.CompareTag("Arbol"))
+		{
+			tocandoArbol = false;
+		}
+	}
 }

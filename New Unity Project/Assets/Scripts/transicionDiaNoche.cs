@@ -16,8 +16,8 @@ public class transicionDiaNoche : MonoBehaviour
     public Sprite fondo4;
     public SpriteRenderer spriteRenderer;
     private int archivoFondoIndice = 0;
-    public float tiempoTransicion = 10f; // 10
-    public int tiempoParaReiniciarCamara = 5;
+    public float tiempoTransicion; // 10
+    public int tiempoParaReiniciarCamara;
 
     public CinemachineVirtualCamera vcam;
     private LensSettings defaultLens;

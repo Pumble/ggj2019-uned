@@ -8,7 +8,7 @@ public class autoSpawnArboles : MonoBehaviour
     public Jugador jugador;
     public Casa casa;
     public Arbol arbol;
-    public float spawnTime = 3f;
+    public float spawnTime = 4f;
     public int limite;
     public int cuantosArboles = 10;
     

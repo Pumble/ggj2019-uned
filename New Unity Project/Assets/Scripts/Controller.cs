@@ -69,13 +69,13 @@ public class Controller : MonoBehaviour
 			{
 				musicaPrincipal.Play();
 			}
-			else if (false)
+			else if (MusicaLobos.isPlaying || introMusicaLobos.isPlaying)
 			{
 				musicaPrincipal.Stop();
 			}
 
 
-			if (musicaIntroTocando && !introMusicaLobos.isPlaying && !MusicaLobos.isPlaying)
+			if ((musicaIntroTocando && !introMusicaLobos.isPlaying && !MusicaLobos.isPlaying))
 			{
 				MusicaLobos.Play();
 				musicaIntroTocando = false;
@@ -142,6 +142,15 @@ public class Controller : MonoBehaviour
 
 	public void detenerMusicaNoche()
 	{
+		musicaNoche.Stop();
+	}
+
+	public void detenerTodaMusicaDeEsteComponente()
+	{
+		musicaPrincipal.Stop();
+		MusicaLobos.Stop();
+		introMusicaPrincipal.Stop();
+		introMusicaLobos.Stop();
 		musicaNoche.Stop();
 	}
 }

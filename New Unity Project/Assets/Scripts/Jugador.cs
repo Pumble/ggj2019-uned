@@ -10,6 +10,7 @@ public class Jugador : MonoBehaviour
 	public GameObject gameOver;
 
 	public AudioSource muerteMusica;
+	public GameObject alerta;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class Jugador : MonoBehaviour
         if (v.getVida() <= 0)
         {
 			if (!muerteMusica.isPlaying)
-			{ muerteMusica.Play(); print("a"); }
+			{ muerteMusica.Play(); }
 			//Destroy(gameObject);
 			//Animación
 			gameObject.GetComponent<walk>().muerto = true;
@@ -50,5 +51,15 @@ public class Jugador : MonoBehaviour
 	void Reiniciar()
 	{
 		gameOver.SetActive(true);
+	}
+
+	public void Alerta()
+	{
+		alerta.SetActive(true);
+	}
+
+	public void AlertaDesactivar()
+	{
+		alerta.SetActive(false);
 	}
 }

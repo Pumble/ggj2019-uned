@@ -30,32 +30,24 @@ public class Arbol : MonoBehaviour
             casa.anadirRecursos(5);
             Destroy(gameObject);
         }
-    }
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
-    }
+		if(Vector2.Distance(transform.position, jugador.transform.position) <= 0.5f)
+		{
+			jugador.Alerta();
+			if (Input.GetMouseButtonDown(1))
+			{
+				jugador.AlertaDesactivar();
+				v.reducirVida(jugador.danoInflinge);
+			}
+		}
+		else
+		{
+			jugador.AlertaDesactivar();
+		}
+		
+	}
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.name == "player")
-        {
-            if (Input.GetMouseButtonDown(1))
-            {
-                v.reducirVida(jugador.danoInflinge);
-            }
-        }
-    }
-    void OnTriggerStay2D(Collider2D col)
-    {
-        if (col.gameObject.name == "player")
-        {
-            if (Input.GetMouseButtonDown(1))
-            {
-                v.reducirVida(jugador.danoInflinge);
-            }
-        }
-    }
+
     public int getVida() {
         return v.getVida();
     }
