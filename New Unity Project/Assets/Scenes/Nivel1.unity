@@ -294,7 +294,7 @@ MonoBehaviour:
   radioDeSpawn: 1.2
   spawnDeLobos: {fileID: 1071259969}
   cuantosLobos: 2
-  tiempoSpawn: 5
+  tiempoSpawn: 60
   introMusicaLobos: {fileID: 136516469}
   MusicaLobos: {fileID: 136516472}
   musicaPrincipal: {fileID: 136516471}

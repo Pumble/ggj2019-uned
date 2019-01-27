@@ -10,6 +10,7 @@ public class Arbol : MonoBehaviour
     private Vida v;
     [SerializeField]
     public Sprite[] tiposArboles;
+    private Animator animacion;
 
 
     private SpriteRenderer spriteRender;
@@ -20,6 +21,7 @@ public class Arbol : MonoBehaviour
         v = GetComponentInParent<Vida>();
         spriteRender = GetComponentInChildren<SpriteRenderer>();
         spriteRender.sprite = tiposArboles[Random.Range(0, 2)];
+        animacion = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -29,7 +31,9 @@ public class Arbol : MonoBehaviour
         {
             // DISPARAR ANIMACION DE CAIDA DE ARBOL
             casa.anadirRecursos(5);
-            Destroy(gameObject);
+            spriteRender.sprite = null;
+            animacion.SetBool("muerte", true);
+            Destroy(gameObject, 0.2f);
         }
 
 		if(Vector2.Distance(transform.position, jugador.transform.position) <= 0.5f)
