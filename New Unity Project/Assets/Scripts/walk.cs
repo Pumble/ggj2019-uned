@@ -109,6 +109,8 @@ public class walk : MonoBehaviour
 	{
 		if (collision.CompareTag("Enemigo") && animacion.GetBool("atacando"))
 		{
+			GameObject.FindGameObjectWithTag("snd").GetComponent<Sonidos>().sndAtaqueCastor();
+
 			if (_cooldown <= 0)
 			{
 				collision.gameObject.GetComponent<Vida>().vida--;
