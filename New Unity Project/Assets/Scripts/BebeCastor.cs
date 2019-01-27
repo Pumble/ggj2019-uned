@@ -10,12 +10,15 @@ public class BebeCastor : MonoBehaviour
     public float tiempoAnimacionCura = 2f;
     private Animator animacion;
     private float _cooldown;
+    private float tiempoParaSaludar;
 
     // Start is called before the first frame update
     void Start()
     {
         animacion = GetComponentInChildren<Animator>();
         _cooldown = cooldown;
+        tiempoParaSaludar = Random.Range(5f, 12f);
+        StartCoroutine(saludar());
     }
 
     // Update is called once per frame
@@ -58,5 +61,20 @@ public class BebeCastor : MonoBehaviour
         yield return new WaitForSeconds(tiempoAnimacionCura);
         animacion.SetBool("curar", false);
         jugador.setVida(6);
+    }
+
+    IEnumerator saludar()
+    {
+        yield return new WaitForSeconds(tiempoParaSaludar);
+        animacion.SetBool("saludar", true);
+        StartCoroutine(dejarDeSaludar());
+    }
+    IEnumerator dejarDeSaludar()
+    {
+        yield return new WaitForSeconds(2f);
+        animacion.SetBool("saludar", false);
+
+        tiempoParaSaludar = Random.Range(5f, 12f);
+        StartCoroutine(saludar());
     }
 }

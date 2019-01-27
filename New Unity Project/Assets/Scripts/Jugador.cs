@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Jugador : MonoBehaviour
@@ -8,8 +9,8 @@ public class Jugador : MonoBehaviour
     public Casa casa;
     public int danoInflinge;
 	public GameObject gameOver;
-
-	public AudioSource muerteMusica;
+    public Slider sliderVida;
+    public AudioSource muerteMusica;
 	public GameObject alerta;
 
     // Start is called before the first frame update
@@ -35,12 +36,13 @@ public class Jugador : MonoBehaviour
         {
             //casa.anadirRecursos(5);
         }
+        sliderVida.value = v.getVida();
     }
 
 	public int getVida()
 	{
 		return v.getVida();
-	}
+    }
 
 	public void setVida(int _vida)
 	{
