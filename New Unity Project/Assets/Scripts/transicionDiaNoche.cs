@@ -27,7 +27,7 @@ public class transicionDiaNoche : MonoBehaviour
     private float lerpTimeAux = 0f;
 
 	private GameObject controller;
-    private bool transition = true;
+    private bool transition;
 
     public float zoomIn = 2f;
     public float zoomOut = 4f;
@@ -40,9 +40,6 @@ public class transicionDiaNoche : MonoBehaviour
 
 		InvokeRepeating("cambiarFondo", 1.0f, tiempoTransicion);
         // INICIA CON UN SEGUNDO DESPUES Y SE EJECUTA CADA 30s
-
-        defaultLens = new LensSettings(19.6f, 2f, 0.1f, 5000f, 0f, true, 1);
-        zoomOutLens = new LensSettings(19.6f, 4f, 0.1f, 5000f, 0f, true, 1);
     }
 
     // Update is called once per frame
@@ -56,25 +53,14 @@ public class transicionDiaNoche : MonoBehaviour
         {
             vcam.m_Lens.OrthographicSize = Mathf.Lerp(zoomOut, zoomIn, lerpTimeAux);
         }
-        lerpTimeAux += 0.25f * Time.deltaTime;
-        /*
-        if (lerpTimeAux >= lerpTime)
-        {
-            lerpTimeAux = 0f;
-        }
-        */
+        lerpTimeAux += 0.5f * Time.deltaTime;
     }
 
     void cambiarFondo()
     {
-        // vcam.m_Lens = zoomOutLens;
-        //vcam.m_Lens = LensSettings.Lerp(defaultLens, zoomOutLens, lerpTime * Time.deltaTime);
-        //vcam.m_Lens.OrthographicSize = Mathf.Lerp(zoomIn, zoomOut, lerpTime * Time.deltaTime);
 
         transition = true;
         lerpTimeAux = 0f;
-        Debug.Log("Inicia el zoom out");
-
         switch (archivoFondoIndice)
         {
             case 0:
@@ -102,12 +88,7 @@ public class transicionDiaNoche : MonoBehaviour
     IEnumerator reiniciarCamara() {
         // AQUI SOLO DEBEMOS VOLVER LA CAMARA A LA ORIGINALIDAD
         yield return new WaitForSeconds(tiempoParaReiniciarCamara);
-        //vcam.m_Lens.OrthographicSize = zoomIn;
         transition = false;
         lerpTimeAux = 0f;
-        Debug.Log("Inicia el zoom in");
-        // vcam.m_Lens = defaultLens;
-        //vcam.m_Lens.OrthographicSize = Mathf.Lerp(zoomOut, zoomIn, lerpTime * Time.deltaTime);
-        // vcam.m_Lens = LensSettings.Lerp(zoomOutLens, defaultLens, lerpTime * Time.deltaTime);
     }
 }

@@ -52,7 +52,6 @@ public class Arbol : MonoBehaviour
 		
 	}
 
-
     public int getVida() {
         return v.getVida();
     }
