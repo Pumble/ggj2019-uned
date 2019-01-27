@@ -196,7 +196,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -291,12 +291,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lobo: {fileID: 5784094318541033786, guid: a14033411700fc74881b803ad281b270, type: 3}
-  radioDeSpawn: 1.2
+  radioDeSpawn: 1.3
   spawnDeLobos: {fileID: 1071259969}
-  cuantosLobos: 2
-  tiempoSpawn: 15
-  introMusicaLobos: {fileID: 136516469}
-  MusicaLobos: {fileID: 136516470}
+  cuantosLobos: 4
+  tiempoSpawn: 47
+  introMusicaLobos: {fileID: 136516470}
+  MusicaLobos: {fileID: 136516469}
   musicaPrincipal: {fileID: 136516472}
   introMusicaPrincipal: {fileID: 136516471}
   musicaNoche: {fileID: 136516473}
@@ -310,7 +310,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 47d373b9a1d2d184e8bb05bad07da5e5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1a8990819c1093f4bbe44647a2a0821c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -406,7 +406,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8744ffd61c155434197aa6c9148e8444, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 78f13c88c71d72e4db003b8db3f73ddf, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1245,7 +1245,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
