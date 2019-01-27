@@ -66,7 +66,7 @@ public class Controller : MonoBehaviour
 		if (!jugador.muerto)
 		{
 			if (!musicaNoche.isPlaying && !introMusicaPrincipal.isPlaying &&
-			  !musicaPrincipal.isPlaying && !introMusicaLobos.isPlaying && !MusicaLobos.isPlaying && !musicaIntroTocando)
+			  !musicaPrincipal.isPlaying && !introMusicaLobos.isPlaying && !MusicaLobos.isPlaying && !musicaIntroTocando && Lobo.cantidadDeLobos > 0)
 			{
 				musicaPrincipal.Play();
 			}
@@ -90,7 +90,7 @@ public class Controller : MonoBehaviour
 				StartCoroutine(spawnearLobos());
 
 			}
-			else if (cuantosLobos <= 0 && !spawnearHorda)
+			else if (Lobo.cantidadDeLobos <= 0 && !spawnearHorda)
 			{
 
 				MusicaLobos.Stop();

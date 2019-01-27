@@ -29,16 +29,24 @@ public class Lobo : MonoBehaviour
     [SerializeField]
     private float tiempoMuerte = 2f;
 
+	static public int cantidadDeLobos = 0;
+
 	// Start is called before the first frame update
 	void Start()
     {
 		casa = GameObject.FindGameObjectWithTag("Casa");
 		posCasa = casa.transform.position;
 		jugador = GameObject.FindGameObjectWithTag("Player");
+		cantidadDeLobos++;
 	}
 
-    // Update is called once per frame
-    void Update()
+	private void OnDestroy()
+	{
+		cantidadDeLobos--;
+	}
+
+	// Update is called once per frame
+	void Update()
 	{
 		if(GetComponent<Vida>().vida <= 0)
 		{
