@@ -131,8 +131,8 @@ MonoBehaviour:
   casa: {fileID: 0}
   tiposArboles:
   - {fileID: 21300000, guid: 326c9ff301d60f1478f22436d7806c06, type: 3}
-  - {fileID: 21300000, guid: fb77d0d19b0143046a114b432ea9ae87, type: 3}
   - {fileID: 21300000, guid: d220abff15b537749b615a86c8cc7e5d, type: 3}
+  - {fileID: 21300000, guid: fb77d0d19b0143046a114b432ea9ae87, type: 3}
 --- !u!50 &5856767650789278940
 Rigidbody2D:
   serializedVersion: 4
