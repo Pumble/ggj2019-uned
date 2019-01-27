@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
@@ -67,9 +66,10 @@ public class transicionDiaNoche : MonoBehaviour
                 spriteRenderer.sprite = fondo4;
                 break;
             default:
-                archivoFondoIndice = -1;
+                archivoFondoIndice = 0;
                 break;
         }
+
         archivoFondoIndice++;
         StartCoroutine(reiniciarCamara());
     }
