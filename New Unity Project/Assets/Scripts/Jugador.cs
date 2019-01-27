@@ -29,7 +29,9 @@ public class Jugador : MonoBehaviour
 			//Destroy(gameObject);
 			//Animación
 			gameObject.GetComponent<walk>().muerto = true;
-			Reiniciar();
+            gameObject.GetComponent<walk>().inmovil = true;
+
+            Reiniciar();
         }
 
         if (Input.GetKeyDown("space"))

@@ -40,9 +40,8 @@ public class BebeCastor : MonoBehaviour
     {
         if (collision.CompareTag("Player") && tocandoHijo)
         {
-            if (_cooldown <= 0)
+            if (_cooldown <= 0 && tocandoHijo)
             {
-                Debug.Log("Curando");
                 animacion.SetBool("curar", true);
                 StartCoroutine(dejarDeCurar());
                 _cooldown = cooldown;
@@ -56,11 +55,13 @@ public class BebeCastor : MonoBehaviour
             tocandoHijo = false;
         }
     }
+
     IEnumerator dejarDeCurar()
     {
         yield return new WaitForSeconds(tiempoAnimacionCura);
         animacion.SetBool("curar", false);
         jugador.setVida(6);
+        tocandoHijo = false;
     }
 
     IEnumerator saludar()

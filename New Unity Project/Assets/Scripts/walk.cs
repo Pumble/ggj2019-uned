@@ -88,7 +88,6 @@ public class walk : MonoBehaviour
         }
         else
         {
-            inmovil = true;
             animacion.SetBool("morir", true);
         }
     }
@@ -102,7 +101,6 @@ public class walk : MonoBehaviour
         yield return new WaitForSeconds(tiempoDeAnimacionAtaque);
         animacion.SetBool("morder", false);
     }
-
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
