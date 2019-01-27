@@ -27,8 +27,9 @@ public class Arbol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (v.getVida() <= 0)
+        if (v.getVida() == 0)
         {
+			v.vida--;
             // DISPARAR ANIMACION DE CAIDA DE ARBOL
             casa.anadirRecursos(5);
             spriteRender.sprite = null;
