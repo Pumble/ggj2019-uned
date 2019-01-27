@@ -16,8 +16,10 @@ public class Casa : MonoBehaviour
 
 	private int sigNivel;
 
-	// Start is called before the first frame update
-	void Start()
+    public CinemachineVirtualCamera vcam;
+
+    // Start is called before the first frame update
+    void Start()
     {
 		sigNivel = recursosParaNivel2;
 		TextPro.text = String.Format("{0}/{1}", recursos, sigNivel);

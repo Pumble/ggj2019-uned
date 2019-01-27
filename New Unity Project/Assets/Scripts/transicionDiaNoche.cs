@@ -32,6 +32,8 @@ public class transicionDiaNoche : MonoBehaviour
     public float zoomIn = 2f;
     public float zoomOut = 4f;
 
+    public bool detenerTransicion = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,15 +47,18 @@ public class transicionDiaNoche : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transition) // ZOOM OUT
+        if (!detenerTransicion)
         {
-            vcam.m_Lens.OrthographicSize = Mathf.Lerp(zoomIn, zoomOut, lerpTimeAux);
+            if (transition) // ZOOM OUT
+            {
+                vcam.m_Lens.OrthographicSize = Mathf.Lerp(zoomIn, zoomOut, lerpTimeAux);
+            }
+            else // ZOOM IN
+            {
+                vcam.m_Lens.OrthographicSize = Mathf.Lerp(zoomOut, zoomIn, lerpTimeAux);
+            }
+            lerpTimeAux += 0.5f * Time.deltaTime;
         }
-        else // ZOOM IN
-        {
-            vcam.m_Lens.OrthographicSize = Mathf.Lerp(zoomOut, zoomIn, lerpTimeAux);
-        }
-        lerpTimeAux += 0.5f * Time.deltaTime;
     }
 
     void cambiarFondo()
