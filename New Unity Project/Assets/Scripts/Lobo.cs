@@ -88,7 +88,6 @@ public class Lobo : MonoBehaviour
 				anim.SetBool("Corriendo", true);
 				anim.SetBool("Atacando", false);
 			}
-
 		}
 		else
 		{
@@ -126,7 +125,8 @@ public class Lobo : MonoBehaviour
 		anim.SetBool("Atacando", true);
 
 		GameObject.FindGameObjectWithTag("snd").GetComponent<Sonidos>().sndAtaqueLobo();
-		yield return new WaitForSeconds(velocidadDeAtaque);
+        GameObject.FindGameObjectWithTag("bebeCastor").GetComponent<BebeCastor>().sndAtaqueLobo();
+        yield return new WaitForSeconds(velocidadDeAtaque);
 
 		//Cambiar por quitar vida al hogar
 		//int vidaJugador = jugador.GetComponent<Jugador>().getVida();

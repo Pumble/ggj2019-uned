@@ -10,6 +10,7 @@ TagManager:
   - Arbol
   - Enemigo
   - snd
+  - bebeCastor
   layers:
   - Default
   - TransparentFX
