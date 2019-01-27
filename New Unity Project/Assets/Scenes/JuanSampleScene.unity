@@ -162,10 +162,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lobo: {fileID: 5784094318541033786, guid: a14033411700fc74881b803ad281b270, type: 3}
-  radioDeSpawn: 0.6
+  radioDeSpawn: 1.2
   spawnDeLobos: {fileID: 1071259969}
   cuantosLobos: 2
-  tiempoSpawn: 10
+  tiempoSpawn: 47
   introMusicaLobos: {fileID: 136516469}
   MusicaLobos: {fileID: 136516470}
   musicaPrincipal: {fileID: 136516471}
@@ -2046,9 +2046,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d05b79274811954588a548f6cf8decb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  centro: {fileID: 0}
-  velocidad: 0
-  tiempo: 0
+  centro: {fileID: 1070425176}
+  velocidad: 0.5
+  tiempo: 0.75
 --- !u!1 &1812978123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2459,7 +2459,7 @@ MonoBehaviour:
   recursos: 0
   recursosParaNivel2: 150
   recursosParaNivel3: 300
-  TextPro: {fileID: 0}
+  TextPro: {fileID: 1298175431}
 --- !u!1 &2146432375
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,7 +42,7 @@ public class Casa : MonoBehaviour
     public void anadirRecursos(int cantidadRecursos)
     {
         recursos += cantidadRecursos;
-		TextPro.text = string.Format("{}/{}", recursos, sigNivel);
+		TextPro.text = string.Format("{0}/{1}", recursos, sigNivel);
         Debug.Log("recursos actuales " + recursos);
     }
 }
