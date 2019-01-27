@@ -74,7 +74,7 @@ public class Controller : MonoBehaviour
 			}
 
 			if (!musicaNoche.isPlaying && !introMusicaPrincipal.isPlaying &&
-			  !musicaPrincipal.isPlaying && !introMusicaLobos.isPlaying && !MusicaLobos.isPlaying && !musicaIntroTocando && Lobo.cantidadDeLobos > 0)
+			  !musicaPrincipal.isPlaying && !introMusicaLobos.isPlaying && !MusicaLobos.isPlaying && !musicaIntroTocando && Lobo.cantidadDeLobos <= 0)
 			{
 				musicaPrincipal.Play();
 			}
