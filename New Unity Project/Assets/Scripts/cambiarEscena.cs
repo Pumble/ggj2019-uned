@@ -7,10 +7,33 @@ public class cambiarEscena : MonoBehaviour
 {
 
 	public AudioSource boton;
+	int x = 0;
+	bool n = false;
 
-    public void nivel(int i)
+
+	private void Update()
 	{
-		boton.Play();
-		SceneManager.LoadScene(i);
+		if (n)
+		{
+			StartCoroutine(esperarParaCambiar());
+
+		}
+	}
+
+	public void nivel(int i)
+	{
+
+		n = true;
+		x = i;
+
+	}
+
+	IEnumerator esperarParaCambiar()
+	{
+		if(!boton.isPlaying)
+			boton.Play();
+		
+		yield return new WaitForSecondsRealtime(x);
+		SceneManager.LoadScene(x);
 	}
 }
