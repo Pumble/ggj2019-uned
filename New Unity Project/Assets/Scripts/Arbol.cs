@@ -11,6 +11,7 @@ public class Arbol : MonoBehaviour
     [SerializeField]
     public Sprite[] tiposArboles;
 
+
     private SpriteRenderer spriteRender;
 
     // Start is called before the first frame update
@@ -38,6 +39,10 @@ public class Arbol : MonoBehaviour
 			{
 				jugador.AlertaDesactivar();
 				v.reducirVida(jugador.danoInflinge);
+				if (v.vida <= 0)
+				{
+					GameObject.FindGameObjectWithTag("snd").GetComponent<Sonidos>().sndMadera();
+				}
 			}
 		}
 		else

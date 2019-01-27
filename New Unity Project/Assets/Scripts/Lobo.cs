@@ -98,8 +98,8 @@ public class Lobo : MonoBehaviour
 		anim.SetBool("Idle", false);
 		anim.SetBool("Corriendo", false);
 		anim.SetBool("Atacando", true);
-		
 
+		GameObject.FindGameObjectWithTag("snd").GetComponent<Sonidos>().sndAtaqueLobo();
 		yield return new WaitForSeconds(velocidadDeAtaque);
 
 		int vidaJugador = jugador.GetComponent<Jugador>().getVida();
@@ -117,8 +117,13 @@ public class Lobo : MonoBehaviour
 		anim.SetBool("Corriendo", false);
 		anim.SetBool("Atacando", true);
 
-		//int vidaJugador = Casa.GetComponent<Casa>().getVida();
-		//casa.GetComponent<Casa>().setVida(vidaJugador -= danno);
+		GameObject.FindGameObjectWithTag("snd").GetComponent<Sonidos>().sndAtaqueLobo();
+		yield return new WaitForSeconds(velocidadDeAtaque);
+
+		//Cambiar por quitar vida al hogar
+		//int vidaJugador = jugador.GetComponent<Jugador>().getVida();
+		//jugador.GetComponent<Jugador>().setVida(vidaJugador -= danno);
+		
 		ataco = false;
 	}
 

@@ -41,6 +41,7 @@ public class Controller : MonoBehaviour
 	[SerializeField]
 	private AudioSource musicaNoche;
 
+
 	private AudioSource musicaEnUso;
 
 	private bool spawneado = false;
@@ -78,6 +79,7 @@ public class Controller : MonoBehaviour
 			if ((musicaIntroTocando && !introMusicaLobos.isPlaying && !MusicaLobos.isPlaying))
 			{
 				MusicaLobos.Play();
+				musicaPrincipal.Stop();
 				musicaIntroTocando = false;
 			}
 
@@ -121,6 +123,7 @@ public class Controller : MonoBehaviour
 		{
 			musicaIntroTocando = true;
 			spawnearHorda = false;
+			musicaPrincipal.Stop();
 			introMusicaLobos.Play();
 		}
 		GameObject obj = Instantiate(lobo, Random.insideUnitCircle*radioDeSpawn, Quaternion.identity) ;

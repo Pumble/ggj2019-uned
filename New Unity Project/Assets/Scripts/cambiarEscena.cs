@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 public class cambiarEscena : MonoBehaviour
 {
 
+	public AudioSource boton;
+
     public void nivel(int i)
 	{
+		boton.Play();
 		SceneManager.LoadScene(i);
 	}
 }
