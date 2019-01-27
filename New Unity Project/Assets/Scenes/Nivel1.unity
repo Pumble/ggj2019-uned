@@ -1971,7 +1971,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 73d3d7d2346d86a4b9de606bd5f7401b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 32c6ab4d330105f439e9f87de9f05417, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2067,7 +2067,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 72e64920391d4f44790e70ac3ddccb79, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ac1ceef1e8dab93489b3ce054f7d17d6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2163,7 +2163,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 26faaa8656173c241bd594bd80a41f77, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5a2f74bac863e8f45a532b6a20ebcb0d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4403,8 +4403,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recursos: 0
-  recursosParaNivel2: 10
-  recursosParaNivel3: 20
+  recursosParaNivel2: 20
+  recursosParaNivel3: 50
   TextPro: {fileID: 1298175431}
   victoria: {fileID: 943298734}
   casa:
@@ -4591,7 +4591,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1980561056}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 6
+  m_MaxValue: 5
   m_WholeNumbers: 1
   m_Value: 5
   m_OnValueChanged:
