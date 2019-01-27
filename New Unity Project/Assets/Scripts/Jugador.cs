@@ -29,7 +29,7 @@ public class Jugador : MonoBehaviour
 			//Destroy(gameObject);
 			//Animación
 			gameObject.GetComponent<walk>().muerto = true;
-            gameObject.GetComponent<walk>().inmovil = true;
+            //gameObject.GetComponent<walk>().inmovil = true;
 
             Reiniciar();
         }

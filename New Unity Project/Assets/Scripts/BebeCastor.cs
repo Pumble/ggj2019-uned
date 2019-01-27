@@ -64,7 +64,6 @@ public class BebeCastor : MonoBehaviour
         jugador.setVida(6);
         tocandoHijo = false;
     }
-
     IEnumerator saludar()
     {
         yield return new WaitForSeconds(tiempoParaSaludar);

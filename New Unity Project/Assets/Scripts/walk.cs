@@ -88,6 +88,11 @@ public class walk : MonoBehaviour
         }
         else
         {
+            animacion.SetFloat("Speed", 0);
+            animacion.SetFloat("EjeY", 0);
+            animacion.SetFloat("EjeX", 0);
+            animacion.SetBool("atacando", false);
+            animacion.SetBool("morder", false);
             animacion.SetBool("morir", true);
         }
     }
