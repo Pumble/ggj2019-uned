@@ -58,20 +58,34 @@ public class walk : MonoBehaviour
 				animacion.SetFloat("EjeY", 0);
 				animacion.SetFloat("EjeX", 0);
 			}
-			if (Input.GetKeyDown("space"))
+			if (Input.GetMouseButtonDown(0)) // MARIO COLITAS
 			{
 				animacion.SetFloat("Speed", 0);
 				animacion.SetFloat("EjeY", 0);
 				animacion.SetFloat("EjeX", 0);
-				animacion.SetBool("atacando", true);
+                animacion.SetBool("morder", false);
+                animacion.SetBool("atacando", true);
                 StartCoroutine(dejarDeAtacar());
-
 			}
-		}
+            if (Input.GetMouseButtonDown(1)) // MORDER
+            {
+                animacion.SetFloat("Speed", 0);
+                animacion.SetFloat("EjeY", 0);
+                animacion.SetFloat("EjeX", 0);
+                animacion.SetBool("atacando", false);
+                animacion.SetBool("morder", true);
+                StartCoroutine(dejarDeMorder());
+            }
+        }
     }
     IEnumerator dejarDeAtacar()
     {
         yield return new WaitForSeconds(tiempoDeAnimacionAtaque);
         animacion.SetBool("atacando", false);
+    }
+    IEnumerator dejarDeMorder()
+    {
+        yield return new WaitForSeconds(tiempoDeAnimacionAtaque);
+        animacion.SetBool("morder", false);
     }
 }
